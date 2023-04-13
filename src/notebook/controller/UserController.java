@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class UserController {
-    private final GBRepository repository;
+    private final GBRepository<User> repository;
 
-    public UserController(GBRepository repository) {
+    public UserController(GBRepository<User> repository) {
         this.repository = repository;
     }
 
@@ -35,5 +35,13 @@ public class UserController {
     public void updateUser(String userId, User update) {
         update.setId(Long.parseLong(userId));
         repository.update(Long.parseLong(userId), update);
+    }
+
+    public void deleteById(String id) {
+        repository.deleteById(Long.parseLong(id));
+    }
+
+    public void delete() {
+        repository.deleteAll();
     }
 }

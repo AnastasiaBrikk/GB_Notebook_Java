@@ -8,10 +8,12 @@ import notebook.model.User;
 
 // Репозиторий, для выполнения CreateReadUpdateDelete (CRUD) операций
 
-public interface GBRepository {
-    List<User> findAll();
-    User create(User user);
-    Optional<User> findById(Long id);
-    Optional<User> update(Long id, User e);
-    boolean delete(Long id);
+public interface GBRepository<T> {
+    List<T> findAll();
+    void saveAll(List<String> data);
+    User create(T user);
+    Optional<T> findById(Long id);
+    Optional<T> update(Long id, T e);
+    boolean deleteById(Long id);
+    boolean deleteAll();
 }

@@ -2,6 +2,8 @@ package notebook.view;
 
 import notebook.controller.UserController;
 import notebook.model.User;
+import notebook.repository.GBRepository;
+import notebook.repository.impl.UserRepository;
 import notebook.util.Commands;
 
 import java.util.List;
@@ -43,17 +45,28 @@ public class UserView {
                         throw new RuntimeException(e);
                     }
                     break;
-                case LIST:
+                
+                case READ_ALL:
                     List<User> users = userController.getAllUsers();
                     for (User user : users) {
                         System.out.println(user);
+                        System.out.println("--------------");
                     }
                     break;
                 case UPDATE:
                     String userId = prompt("Введите Id контакта: ");
                     userController.updateUser(userId, createUser());
                     break;
-                    
+
+                case DELETE:
+                    String delId = prompt("Введите Id контакта для удаления: ");
+                    userController.deleteById(delId);
+                    break;
+
+                case DELETE_ALL:
+                    userController.delete();
+                    break;
+               
             }
         }
     }
