@@ -2,10 +2,7 @@ package notebook.view;
 
 import notebook.controller.UserController;
 import notebook.model.User;
-import notebook.repository.GBRepository;
-import notebook.repository.impl.UserRepository;
 import notebook.util.Commands;
-
 import java.util.List;
 import java.util.Scanner;
 
